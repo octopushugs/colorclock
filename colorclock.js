@@ -1,13 +1,19 @@
 function startTime() {
-	var now = new Date();
+	var now;
 	var color = "";  
-	color = createCode(now.getHours(), now.getMinutes(), now.getSeconds());
-	document.body.style.backgroundColor = '#' + color;
-	//For minimal markup
-	document.body.style.color = '#ffffff';
-	document.getElementById("time").innerHTML = cleanCode(color);
-	var t = setInterval(function(){startTime()}, 500);
+	var timeDisplay = document.getElementById("time"); //So we don't traverse the DOM every time the function runs
+	
+	function update() {
+		//Lets do the actual heavy lifting/updating here to avoid recreating variables for every iteration
+		now = new Date();
+		color = createCode(now.getHours(), now.getMinutes(), now.getSeconds());
+		document.body.style.background = '#' + color;
+		timeDisplay.innerHTML = cleanCode(color);			
+	}
+
+	setInterval(update, 500);
 }
+
 function createCode(h, m, s) {
 	//checks the length of hour, minute, and second, and adds a 0 to make sure that the time code is always 6 digits long
   	h = appendTime(h);
