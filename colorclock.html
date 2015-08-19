@@ -3,20 +3,15 @@
 <head>
   <meta charset="utf-8">
   <title>colorclock</title>
-  <style>
-  	html, body {
-		margin: 0;
-		padding: 0;
-		font-family: Ubuntu;
-	}
-	@font-face {
-		font-family: Ubuntu;
-		src: url('ubuntu-l.ttf');
-	}
-  </style>
+  <link rel="stylesheet" href="clockstyle.css">
 </head>
 <body onLoad='startTime()'>
-	<h1 id="time"></h1>
+	<div class="container">
+		<div class="row">
+			<p>What color is it?</p>
+			<h1 id="time"></h1>
+		</div>
+	</div>
 </body>
 <script type="text/javascript" src="colorclock.js"></script>
 </html>
